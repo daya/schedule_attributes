@@ -3,11 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## HEAD
 
-## 0.5.1
+## 0.5.2
 
 - Fix bug with end_time merging ~ @dgilperez
 
-## 0.5.2
+## 0.5.1
 
 - Fix several failing combinations of start/end_time and start/end_date after allowing Model#schedule_attributes to accept string- and symbol-keyed hashes ~ @dgilperez
 
