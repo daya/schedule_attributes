@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   # s.add_runtime_dependency 'railties', '>= 3.2'
 
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rspec', '~> 2.99'
   s.add_development_dependency 'pry'
   s.add_development_dependency 'activerecord', '>= 3.2'
   s.add_development_dependency 'sqlite3'
