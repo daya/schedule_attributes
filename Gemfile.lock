@@ -3,7 +3,7 @@ PATH
   specs:
     schedule_attributes (0.3.0)
       activesupport
-      ice_cube (>= 0.12)
+      ice_cube (~> 0.13)
       tzinfo
 
 GEM
@@ -25,7 +25,7 @@ GEM
     coderay (1.0.9)
     diff-lcs (1.2.4)
     i18n (0.6.1)
-    ice_cube (0.12.1)
+    ice_cube (0.13.0)
     method_source (0.8.1)
     multi_json (1.7.3)
     pry (0.9.12.1)
