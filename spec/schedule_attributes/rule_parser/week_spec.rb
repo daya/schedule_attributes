@@ -19,18 +19,18 @@ describe ScheduleAttributes::RuleParser::Week do
     subject      { parser.rule }
 
     context 'no arguments', args: {} do
-      it { should == IceCube::Rule.weekly }
-      its_occurrences_until(5.weeks.from_now) { should == weekly }
+      it { is_expected.to eq(IceCube::Rule.weekly) }
+      its_occurrences_until(5.weeks.from_now) { is_expected.to eq(weekly) }
     end
 
     context 'interval argument', args: {"interval" => "2"} do
-      it { should == IceCube::Rule.weekly(2) }
-      its_occurrences_until(5.weeks.from_now) { should == every_2_weeks }
+      it { is_expected.to eq(IceCube::Rule.weekly(2)) }
+      its_occurrences_until(5.weeks.from_now) { is_expected.to eq(every_2_weeks) }
     end
 
     context 'several day name arguments', args: {"monday" => "0", "saturday" => "1", "sunday" => "1"} do
-      it { should == IceCube::Rule.weekly.day(0,6) }
-      its_occurrences_until(Date.today.beginning_of_week+3.weeks) { subject[-4..-1].should == weekends[-4..-1] }
+      it { is_expected.to eq(IceCube::Rule.weekly.day(0,6)) }
+      its_occurrences_until(Date.today.beginning_of_week+3.weeks) { expect(subject[-4..-1]).to eq weekends[-4..-1] }
     end
   end
 end

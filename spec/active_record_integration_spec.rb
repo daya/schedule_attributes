@@ -3,7 +3,7 @@ require 'support/scheduled_active_record_model'
 
 describe CustomScheduledActiveRecordModel do
   it "should have a default schedule" do
-    subject.my_schedule.should == hourly
+    expect(subject.my_schedule).to eq(hourly)
   end
 
   def hourly
@@ -17,7 +17,7 @@ describe DefaultScheduledActiveRecordModel do
   alias :model :subject
 
   it "should have a default schedule" do
-    subject.schedule.should be_a IceCube::Schedule
+    expect(subject.schedule).to be_a IceCube::Schedule
   end
 
 
@@ -35,7 +35,7 @@ describe DefaultScheduledActiveRecordModel do
       expected = IceCube::Schedule.new(Time.local(2013, 2, 26)) do |s|
         s.rrule IceCube::Rule.daily(3).until(Time.local(2016, 7, 7))
       end
-      model.schedule.should == expected
+      expect(model.schedule).to eq(expected)
     end
 
     it "should deal with all_occurrences with no infinite loops" do
@@ -49,8 +49,8 @@ describe DefaultScheduledActiveRecordModel do
       # Calling schedule_attributes should not change Schedule::Rule.
       model.schedule_attributes
 
-      model.schedule.should == schedule
-      model.schedule.all_occurrences.size.should == 5
+      expect(model.schedule).to eq(schedule)
+      expect(model.schedule.all_occurrences.size).to eq(5)
     end
   end
 

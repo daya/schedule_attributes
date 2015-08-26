@@ -17,26 +17,26 @@ describe ScheduleAttributes::RuleParser::Year do
     subject      { parser.rule }
 
     context 'no arguments', args: {} do
-      it { should == IceCube::Rule.yearly }
-      its_occurrences_until(4.years.from_now) { should == every_year }
+      it { is_expected.to eq(IceCube::Rule.yearly) }
+      its_occurrences_until(4.years.from_now) { is_expected.to eq(every_year) }
     end
 
     context 'interval argument', args: {"interval" => "2"} do
-      it { should == IceCube::Rule.yearly(2) }
-      its_occurrences_until(4.years.from_now) { should == every_2nd_year }
+      it { is_expected.to eq(IceCube::Rule.yearly(2)) }
+      its_occurrences_until(4.years.from_now) { is_expected.to eq(every_2nd_year) }
     end
 
     context 'start_date argument', args: {"start_date" => "2000-03-14"} do
-      it { should == IceCube::Rule.yearly.month_of_year(3).day_of_month(14) }
+      it { is_expected.to eq(IceCube::Rule.yearly.month_of_year(3).day_of_month(14)) }
     end
 
     context 'start_date argument alt', args: {"start_date" => "2000-01-30"} do
-      it { should == IceCube::Rule.yearly.month_of_year(1).day_of_month(30) }
+      it { is_expected.to eq(IceCube::Rule.yearly.month_of_year(1).day_of_month(30)) }
     end
 
     context 'start_date and end_date arguments', args: {"start_date" => "2000-03-14", "end_date" => "#{Date.current.year+4}-03-14"} do
-      it { should == IceCube::Rule.yearly.month_of_year(3).day_of_month(14).until(Date.new(Date.current.year+4,3,14).to_time) }
-      its_occurrences_until(10.years.from_now) { should == every_pi_day }
+      it { is_expected.to eq(IceCube::Rule.yearly.month_of_year(3).day_of_month(14).until(Date.new(Date.current.year+4,3,14).to_time)) }
+      its_occurrences_until(10.years.from_now) { is_expected.to eq(every_pi_day) }
     end
 
     context "ignoring yearly_start and end limits", args: {
@@ -46,8 +46,8 @@ describe ScheduleAttributes::RuleParser::Year do
       "yearly_end_month"       => "5",
       "yearly_end_month_day"   => "20"
     } do
-      it { should == IceCube::Rule.yearly.month_of_year(3).day_of_month(14) }
-      its_occurrences_until(Date.new(Date.current.year+4,12,31)) { should == every_pi_day }
+      it { is_expected.to eq(IceCube::Rule.yearly.month_of_year(3).day_of_month(14)) }
+      its_occurrences_until(Date.new(Date.current.year+4,12,31)) { is_expected.to eq(every_pi_day) }
     end
   end
 end

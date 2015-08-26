@@ -5,12 +5,12 @@ describe "ScheduleAttributes" do
   describe ".configure" do
     it "yields a configuration instance" do
       ScheduleAttributes.configure do |config|
-        config.should be_a ScheduleAttributes::Configuration
+        expect(config).to be_a ScheduleAttributes::Configuration
       end
     end
 
     it "returns a configuration instance" do
-      ScheduleAttributes.configure.should be_a ScheduleAttributes::Configuration
+      expect(ScheduleAttributes.configure).to be_a ScheduleAttributes::Configuration
     end
   end
 end
@@ -18,12 +18,12 @@ end
 describe ScheduleAttributes::Configuration do
   describe ".time_format" do
     it "has a default" do
-      subject.time_format.should == '%H:%M'
+      expect(subject.time_format).to eq('%H:%M')
     end
 
     it "is settable" do
       subject.time_format = '%l:%M %P'
-      subject.time_format.should == '%l:%M %P'
+      expect(subject.time_format).to eq('%l:%M %P')
     end
   end
 end
