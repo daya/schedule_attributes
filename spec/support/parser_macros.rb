@@ -1,11 +1,15 @@
 module SpecHelpers
+  def input_for(klass, args = nil)
+    klass.new(args)
+  end
+
   module ParserMacros
     extend ActiveSupport::Concern
 
     module ClassMethods
       def its_occurrences_until(date, &block)
         describe "occurrences" do
-          shared_examples do
+          shared_examples 'occurrences' do
 
             orig_subject = subject
 

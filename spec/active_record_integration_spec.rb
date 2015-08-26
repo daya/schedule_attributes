@@ -1,9 +1,7 @@
 require 'spec_helper'
 require 'support/scheduled_active_record_model'
 
-
 describe CustomScheduledActiveRecordModel do
-
   it "should have a default schedule" do
     subject.my_schedule.should == hourly
   end
@@ -13,7 +11,6 @@ describe CustomScheduledActiveRecordModel do
       s.add_recurrence_rule IceCube::Rule.hourly
     }
   end
-
 end
 
 describe DefaultScheduledActiveRecordModel do
