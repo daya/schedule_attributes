@@ -13,7 +13,7 @@ Install using
 
 Or add to your *Gemfile*:
 
-    gem 'dgp-schedule_attributes', '~> 0.4'
+    gem 'dgp-schedule_attributes', '~> 0.4', require: 'schedule_attributes'
 
 To use, include the `ScheduleAttributes` module in your model class.
 
