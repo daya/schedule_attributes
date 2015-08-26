@@ -139,7 +139,7 @@ module ScheduleAttributes
         atts[:start_date] = DateHelpers.today # default for populating the other part of the form
       end
 
-      OpenStruct.new(atts.delete_if { |k,v| v.blank? })
+      OpenStruct.new(atts.delete_if { |_,v| v.blank? })
     end
 
   end

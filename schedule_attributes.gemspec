@@ -18,11 +18,15 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'ice_cube', '~> 0.13'
-  s.add_dependency 'activesupport'
+  s.add_dependency 'activesupport', '>= 3.2'
   s.add_dependency 'tzinfo' # this should be an activesupport dependency!
 
+  # s.add_runtime_dependency 'railties', '>= 3.2'
+
+  s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'pry'
-  s.add_development_dependency 'activerecord'
+  s.add_development_dependency 'activerecord', '>= 3.2'
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'appraisal'
 end
