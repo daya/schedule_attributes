@@ -3,12 +3,12 @@ $:.push File.expand_path("../lib", __FILE__)
 require "schedule_attributes/version"
 
 Gem::Specification.new do |s|
-  s.name        = "schedule_attributes"
+  s.name        = "dgp-schedule_attributes"
   s.version     = ScheduleAttributes::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Andrew Vit", "Mike Nicholaides"]
-  s.email       = ["andrew@avit.ca", "mike@ablegray.com"]
-  s.homepage    = "https://github.com/avit/schedule_attributes"
+  s.authors     = ["David Gil"]
+  s.email       = ["dgilperez@gmail.com"]
+  s.homepage    = "https://github.com/dgilperez/schedule_attributes"
   s.summary     = %q{Handle form inputs for IceCube schedules}
   s.description = %q{Converts to/from date & time inputs for managing scheduled models.}
 
