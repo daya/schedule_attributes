@@ -131,13 +131,25 @@ module ScheduleAttributes
     end
 
     def start_date
-      parse_date_time(@params[:start_date]) if @params[:start_date]
+      if @params[:start_date]
+        parse_date_time(@params[:start_date], @params[:start_time])
+      elsif @params[:start_time] && !time_only?(@params[:start_time])
+        parse_date_time(@params[:start_time])
+      elsif start_time
+        start_time
+      else
+        parse_date_time(@params[:start_time])
+      end
     end
 
     def end_date
       if @params[:end_date]
         parse_date_time(@params[:end_date], @params[:end_time] || @params[:start_time])
-      elsif @params[:end_time]
+      elsif @params[:end_time] && !time_only?(@params[:end_time])
+        parse_date_time(@params[:end_time])
+      elsif end_time
+        end_time
+      else
         parse_date_time(@params[:end_time])
       end
     end
@@ -159,6 +171,10 @@ module ScheduleAttributes
       date_time_parts = [date, time].compact
       return if date_time_parts.empty?
       TimeHelpers.parse_in_zone(date_time_parts.join(' '))
+    end
+
+    def time_only?(string)
+      !!(string.strip =~ /\d{1,2}\:\d{2}/)
     end
   end
 end

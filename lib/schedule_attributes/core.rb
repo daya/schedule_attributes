@@ -28,10 +28,12 @@ module ScheduleAttributes
     extend ActiveSupport::Concern
 
     def schedule_attributes=(options)
+      raise ArgumentError "expecting a Hash" unless options.is_a? Hash
+      options = options.with_indifferent_access
       merge_date_and_time_into_time_attribute!(options)
 
       input = ScheduleAttributes::Input.new(options)
-      new_schedule = IceCube::Schedule.new(input.start_time || TimeHelpers.today)
+      new_schedule = IceCube::Schedule.new(input.start_date || TimeHelpers.today)
 
       if input.repeat?
         parser = ScheduleAttributes::RuleParser[input.interval_unit || 'day'].new(input)
