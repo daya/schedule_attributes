@@ -28,6 +28,8 @@ module ScheduleAttributes
     extend ActiveSupport::Concern
 
     def schedule_attributes=(options)
+      merge_date_and_time_into_time_attribute!(options)
+
       input = ScheduleAttributes::Input.new(options)
       new_schedule = IceCube::Schedule.new(input.start_time || TimeHelpers.today)
 
@@ -140,6 +142,22 @@ module ScheduleAttributes
       end
 
       OpenStruct.new(atts.delete_if { |_,v| v.blank? })
+    end
+
+    private
+
+    # Modifies the passed options hash
+    def merge_date_and_time_into_time_attribute!(options)
+      merged_start_time = "#{options['start_date']} #{options['start_time']}".strip.presence
+      merged_end_time   = "#{options['end_date']} #{options['end_time']}".strip.presence
+      if merged_start_time
+        options.delete('start_date')
+        options['start_time'] = merged_start_time.to_s
+      end
+      if merged_start_time
+        options.delete('end_date')
+        options['end_time'] = merged_end_time.to_s
+      end
     end
 
   end

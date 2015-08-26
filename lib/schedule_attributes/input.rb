@@ -135,11 +135,16 @@ module ScheduleAttributes
     end
 
     def end_date
-      parse_date_time(@params[:end_date], @params[:start_time]) if @params[:end_date]
+      if @params[:end_date]
+        parse_date_time(@params[:end_date], @params[:end_time] || @params[:start_time])
+      elsif @params[:end_time]
+        parse_date_time(@params[:end_time])
+      end
     end
 
     def ends?
-      @params[:end_date].present? && @params[:ends] != "never"
+      return false if @params[:ends] == "never"
+      @params[:end_date].present? || @params[:end_time].present?
     end
 
     def dates

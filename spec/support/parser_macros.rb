@@ -1,8 +1,4 @@
 module SpecHelpers
-  def input_for(klass, args = nil)
-    klass.new(args)
-  end
-
   module ParserMacros
     extend ActiveSupport::Concern
 

@@ -7,9 +7,9 @@ describe CustomScheduledActiveRecordModel do
   end
 
   def hourly
-    IceCube::Schedule.new(Date.today.to_time).tap { |s|
+    IceCube::Schedule.new(Date.today.to_time).tap do |s|
       s.add_recurrence_rule IceCube::Rule.hourly
-    }
+    end
   end
 end
 
@@ -19,7 +19,6 @@ describe DefaultScheduledActiveRecordModel do
   it "should have a default schedule" do
     expect(subject.schedule).to be_a IceCube::Schedule
   end
-
 
   describe "schedule_attributes" do
     it "round-trips a schedule from the database" do
@@ -32,8 +31,10 @@ describe DefaultScheduledActiveRecordModel do
         "sunday"=>"0",   "monday"=>"0", "tuesday"=>"0", "wednesday"=>"0",
         "thursday"=>"0", "friday"=>"0", "saturday"=>"0"
       }
-      expected = IceCube::Schedule.new(Time.local(2013, 2, 26)) do |s|
-        s.rrule IceCube::Rule.daily(3).until(Time.local(2016, 7, 7))
+      start_time = Time.local(2013, 2, 26)
+      end_time   = Time.local(2016, 7, 7)
+      expected   = IceCube::Schedule.new(start_time, end_time: end_time) do |s|
+        s.rrule IceCube::Rule.daily(3).until(end_time)
       end
       expect(model.schedule).to eq(expected)
     end
