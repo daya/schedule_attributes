@@ -29,6 +29,7 @@ module ScheduleAttributes
 
     def schedule_attributes=(options)
       raise ArgumentError "expecting a Hash" unless options.is_a? Hash
+
       options = options.with_indifferent_access
       merge_date_and_time_into_time_attribute!(options)
 
@@ -156,7 +157,7 @@ module ScheduleAttributes
         options.delete('start_date')
         options['start_time'] = merged_start_time.to_s
       end
-      if merged_start_time
+      if merged_end_time
         options.delete('end_date')
         options['end_time'] = merged_end_time.to_s
       end
