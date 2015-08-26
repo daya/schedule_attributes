@@ -27,3 +27,6 @@ matrix:
       gemfile: gemfiles/rails_edge.gemfile
   allow_failures:
     - gemfile: gemfiles/rails_edge.gemfile
+addons:
+  code_climate:
+    repo_token: 4059ce412c6d923b0d5b281f87da3431fdfe2edf267f60d0ff890656432b7af5

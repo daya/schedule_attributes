@@ -1,3 +1,6 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 require 'active_support'
 require 'ostruct'
 require 'support/parser_macros'
