@@ -5,9 +5,13 @@ All notable changes to this project will be documented in this file.
 
 ## 0.5.1
 
+- Fix bug with end_time merging ~ @dgilperez
+
+## 0.5.2
+
 - Fix several failing combinations of start/end_time and start/end_date after allowing Model#schedule_attributes to accept string- and symbol-keyed hashes ~ @dgilperez
 
-## 0.5.0 *(BROKEN)*
+## 0.5.0
 
 - Added Code of Conduct from Contributor Covenant ~ @dgilperez
 - Tests are now rspec-3 like ~ @dgilperez
