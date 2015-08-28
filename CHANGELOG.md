@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## HEAD
 
+## 0.5.3
+
+- Single occurrences don't have a start_date default attribute ~ @dgilperez
+
 ## 0.5.2
 
 - Fix bug with end_time merging ~ @dgilperez
