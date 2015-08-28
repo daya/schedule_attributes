@@ -117,7 +117,7 @@ describe ScheduledModel do
 
     context "for a single date" do
       before { schedule.add_recurrence_time(Date.tomorrow.to_time) }
-      it     { is_expected.to eq(OpenStruct.new(repeat: 0, interval: 1, date: Date.tomorrow, dates: [Date.tomorrow], start_date: Date.today, all_day: true)) }
+      it     { is_expected.to eq(OpenStruct.new(repeat: 0, interval: 1, date: Date.tomorrow, dates: [Date.tomorrow], all_day: true)) }
       it     { expect(subject.date).to be_a(Date) }
     end
 
