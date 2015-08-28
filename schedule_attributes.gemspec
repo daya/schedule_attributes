@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "dgp-schedule_attributes"
   s.version     = ScheduleAttributes::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["David Gil"]
-  s.email       = ["dgilperez@gmail.com"]
+  s.authors     = ["David Gil", "Andrew Vit", "Mike Nicholaides"]
+  s.email       = ["dgilperez@gmail.com", "andrew@avit.ca", "mike@ablegray.com"]
   s.homepage    = "https://github.com/dgilperez/schedule_attributes"
   s.summary     = %q{Handle form inputs for IceCube schedules}
   s.description = %q{Converts to/from date & time inputs for managing scheduled models.}
